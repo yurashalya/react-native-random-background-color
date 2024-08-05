@@ -6,6 +6,9 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  animatedContainer: {
+    flex: 1,
+  },
   title: {
     fontSize: 60,
     fontWeight: "bold",
