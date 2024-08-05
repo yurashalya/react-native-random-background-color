@@ -1,28 +1,27 @@
-import { StyleSheet, Text, View, Platform } from "react-native";
+import { useState } from "react";
+
+import { GreetingView } from "./Pages";
+
+import { generateRandomColor } from "@/utils";
+import Colors from "@/constants/Colors";
 
 const Page = () => {
+  //Depending on the extension of the business logic,
+  //we could use both Async Store and Context.API form React,
+  //but at the moment, due to the simplicity of the application,
+  //we decided to use useState
+  const [bgColor, setBgColor] = useState(Colors.white);
+
+  const handleBackgroundColorChange = () => {
+    setBgColor(generateRandomColor());
+  };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Hello there</Text>
-    </View>
+    <GreetingView
+      bgColor={bgColor}
+      onBackgroundColorChange={handleBackgroundColorChange}
+    />
   );
 };
 
 export default Page;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 60,
-    fontWeight: "bold",
-    ...Platform.select({
-      web: {
-        cursor: "default",
-      },
-    }),
-  },
-});
