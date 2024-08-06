@@ -1,4 +1,4 @@
-# React Native Change background color after clicking
+# Change background color after clicking/pressing
 Project created with help React Native library
 
 Installation steps: 
