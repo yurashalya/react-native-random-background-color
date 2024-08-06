@@ -9,6 +9,9 @@ Project installation steps:
 ## Screenshots
 
 <div style="display: flex; flex-direction: 'row';">
-  <img src="https://github.com/yurashalya/Crypto-wallet/assets/25618300/518a2b2e-79a6-4303-a0a3-480d976f1798" width=70%>
-  <img src="https://github.com/yurashalya/Crypto-wallet/assets/25618300/457be87f-6f88-48a4-8c18-a3f8c302817b" width=30%>
+  <img src="https://github.com/user-attachments/assets/2421b3e4-5383-49e0-ad59-0665dfb75ac8" width=30%>
+  <img src="https://github.com/user-attachments/assets/d0c196af-f28a-4ca5-b626-4d8a31ead3eb" width=30%>
 </div>
+
+
+![telegram-cloud-photo-size-2-5301222161895251763-y](https://github.com/user-attachments/assets/d0c196af-f28a-4ca5-b626-4d8a31ead3eb)
