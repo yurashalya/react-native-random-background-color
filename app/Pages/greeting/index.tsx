@@ -1,5 +1,5 @@
-import { Text, Pressable, Animated } from "react-native";
-import { memo, useRef, useState } from "react";
+import { Text, Pressable, Animated, View } from "react-native";
+import { memo, useRef, useCallback, useEffect } from "react";
 
 import { styles } from "./styles";
 
@@ -10,12 +10,16 @@ type PageProps = {
 
 export const GreetingView: React.FC<PageProps> = memo(
   ({ bgColor, onBackgroundColorChange }) => {
-    const animatedValue = useRef(new Animated.Value(0)).current;
-    const previousColor = useRef(bgColor);
+    const animatedValue = useRef<Animated.Value>(new Animated.Value(0)).current;
+    const previousColor = useRef<string>(bgColor);
 
-    const handlePress = () => {
-      previousColor.current = bgColor;
+    useEffect(() => {
+      if (previousColor.current !== bgColor) {
+        previousColor.current = bgColor;
+      }
+    }, [bgColor]);
 
+    const handlePress = useCallback(() => {
       Animated.timing(animatedValue, {
         toValue: 1,
         duration: 300,
@@ -24,11 +28,11 @@ export const GreetingView: React.FC<PageProps> = memo(
         animatedValue.setValue(0);
         onBackgroundColorChange();
       });
-    };
+    }, [bgColor, onBackgroundColorChange, animatedValue]);
 
     const interpolatedColor = animatedValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [previousColor.current, bgColor],
+      outputRange: [bgColor, previousColor.current],
     });
 
     return (
@@ -40,6 +44,9 @@ export const GreetingView: React.FC<PageProps> = memo(
       >
         <Pressable onPress={handlePress} style={styles.container}>
           <Text style={styles.title}>Hello there</Text>
+          <View>
+            <Text>Current Color: {bgColor}</Text>
+          </View>
         </Pressable>
       </Animated.View>
     );
